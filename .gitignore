@@ -69,3 +69,6 @@ Thumbs.db
 # Logs
 logs/
 *.log
+
+# Allow the safe environment template
+!.env.example
