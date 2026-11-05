@@ -1,4 +1,4 @@
-# MPLAD-AI
+# MPLAD-ai
 AI-Powered MPLADS Monitoring System
 
 [![SIH 2026](https://img.shields.io/badge/SIH-2026-orange.svg)](https://www.sih.gov.in/)
