@@ -64,49 +64,66 @@ flowchart TD
 
 ---
 
-## 👥 6-Member Team Structure & Responsibilities
+## 👥 6-Member Team Structure & 30-Subtask Breakdown
 
-| Role | Member Focus | Key Deliverables |
-| :--- | :--- | :--- |
-| **Member 1 (Lead)** | System Architect & Full-Stack Lead | Monorepo orchestration, FastAPI gateway, Docker Compose, RBAC, CI/CD |
-| **Member 2** | Frontend Lead | React 18, Vite, Tailwind CSS, MP Recommendation & Collector Scrutiny portals |
-| **Member 3** | Frontend & GIS Specialist | Interactive Leaflet GIS map, citizen transparency portal, QR asset cards |
-| **Member 4** | Backend & Database Specialist | PostgreSQL schema, SQLAlchemy 2.0 ORM, Alembic migrations, CRUD services, audit trail |
-| **Member 5** | ML Engineer 1 (Predictive Analytics) | Delay prediction regressor, fund lapse forecaster, Pandas feature pipelines |
-| **Member 6** | ML Engineer 2 (Anomaly & Duplicate) | TF-IDF + spatial duplicate detector, cost outlier Isolation Forest, sector classifier |
+The system modules are strictly aligned with the official MoSPI Problem Statement 26102 Flowchart, assigning **1 Master Task and 5 Subtasks to each of the 6 team members**:
+
+| Member | Role | Flowchart Domain | Key Deliverable |
+| :--- | :--- | :--- | :--- |
+| **Member 1 (Leader)** | System Architect & Backend Lead | 1. Data Sources, 2. Ingestion & Storage, API Gateway | FastAPI Gateway, Docker, Neon/PostgreSQL Schema, RBAC |
+| **Member 2** | Data Preprocessing Specialist | 3. Data Preprocessing & Feature Engineering | Cleaning Pipelines, Source Merging, Feature Matrix Parquet |
+| **Member 3** | ML Engineer 1 (Detection Specialist)| 4. Analysis & Detection Modules | Cost, Delay, Duplicate (NLP+Geo) & Payment Anomaly Models |
+| **Member 4** | ML Engineer 2 (Risk & Explainable AI)| 5. Risk Scoring & 8. Feedback Loop | 0-100 Hybrid Risk Engine, XAI Reasoning, Remedial Actions |
+| **Member 5** | Frontend Lead (Dashboards & Reports) | 6. Web Application (KPIs, Explorer, Analytics, Exports) | React 18, Vite, Summary KPIs, Multi-Filters, PDF Export |
+| **Member 6** | Frontend & GIS Specialist (Maps & Dossier)| 6. India GIS Map, Detailed Project Dossier & XAI Views | Interactive Leaflet Map, Flagged Heatmap, Project Dossier |
+
+> 📖 **Full Task Specification:** See [docs/TEAM_TASK_ALLOCATION.md](docs/TEAM_TASK_ALLOCATION.md) for the complete checklist of all 30 subtasks, data schemas, inputs, outputs, and dependencies.
 
 ---
 
 ## 📂 Repository Structure
 
-```
+`
 MPLAD-AI/
-├── README.md               # Main Project Overview & Architecture Guide
-├── .gitignore              # Multi-stack gitignore (Python, Node, Vite, env)
-├── docker-compose.yml      # Multi-service local orchestrator (App, DB, ML)
-├── docs/                   # Complete System Specifications
-│   ├── ARCHITECTURE.md     # System layers, data flow & security architecture
-│   ├── PHASED_PLAN.md      # Sprint roadmap for the 6-member team
-│   ├── DATA_SCHEMA.md      # PostgreSQL DDL, ER diagram, indices & constraints
-│   ├── API_CONTRACTS.md    # FastAPI REST specifications & JSON schemas
-│   ├── TEAM_WORKFLOW.md    # Git branching, commit standard & PR policies
-│   └── ML_SPECIFICATION.md # Scikit-learn model specifications & metrics
-├── backend/                # FastAPI application
-├── frontend/               # React + Vite + Tailwind CSS application
-└── ml_engine/              # Scikit-learn training & data exploration lab
-```
+├── README.md                   # Main Project Overview & Architecture Guide
+├── .gitignore                  # Multi-stack gitignore (Python, Node, Vite, env)
+├── docker-compose.yml          # Multi-service local orchestrator (App, DB, ML)
+├── docs/                       # Complete System Specifications
+│   ├── TEAM_TASK_ALLOCATION.md # 6-member team breakdown (5 subtasks each)
+│   ├── ARCHITECTURE.md         # System layers, data flow & security architecture
+│   ├── PHASED_PLAN.md          # Sprint roadmap for the 6-member team
+│   ├── DATA_SCHEMA.md          # PostgreSQL DDL, ER diagram, indices & constraints
+│   ├── API_CONTRACTS.md        # FastAPI REST specifications & JSON schemas
+│   ├── TEAM_WORKFLOW.md        # Git branching, commit standard & PR policies
+│   └── ML_SPECIFICATION.md     # Scikit-learn model specifications & metrics
+├── backend/                    # FastAPI application & Neon PostgreSQL connection
+│   ├── app/
+│   │   ├── api/v1/             # REST endpoints (health, projects, risk, analytics)
+│   │   ├── core/               # config.py (Neon URL auto-normalizer), database.py
+│   │   └── main.py             # FastAPI entrypoint
+│   └── tests/                  # Health & Neon database mock unit tests
+├── frontend/                   # React + Vite + Tailwind CSS application
+│   ├── src/                    # Components, pages, GIS maps, charts
+│   └── package.json
+└── ml_engine/                  # ML & Data Science Lab
+    ├── preprocessing/          # Member 2: Cleaning & feature engineering
+    ├── detection/              # Member 3: Cost, delay, duplicate & payment modules
+    ├── risk_engine/            # Member 4: Hybrid 0-100 risk scoring & XAI
+    └── saved_models/           # Serialized model artifacts (.joblib)
+`
 
 ---
 
 ## 📚 Technical Documentation Index
 
-Detailed architectural specifications are available in the [docs/](file:///C:/Users/Asuus/MPLAD-AI/docs) directory:
-- [System Architecture](file:///C:/Users/Asuus/MPLAD-AI/docs/ARCHITECTURE.md)
-- [Phased Implementation Roadmap](file:///C:/Users/Asuus/MPLAD-AI/docs/PHASED_PLAN.md)
-- [Shared Data Schema (PostgreSQL DDL)](file:///C:/Users/Asuus/MPLAD-AI/docs/DATA_SCHEMA.md)
-- [API Contracts & Interfaces](file:///C:/Users/Asuus/MPLAD-AI/docs/API_CONTRACTS.md)
-- [Git Branching & Team Workflow](file:///C:/Users/Asuus/MPLAD-AI/docs/TEAM_WORKFLOW.md)
-- [Machine Learning Specification](file:///C:/Users/Asuus/MPLAD-AI/docs/ML_SPECIFICATION.md)
+Detailed architectural specifications are available in the [docs/](docs) directory:
+- [6-Member Team Task Allocation (30 Subtasks)](docs/TEAM_TASK_ALLOCATION.md)
+- [System Architecture](docs/ARCHITECTURE.md)
+- [Phased Implementation Roadmap](docs/PHASED_PLAN.md)
+- [Shared Data Schema (PostgreSQL DDL)](docs/DATA_SCHEMA.md)
+- [API Contracts & Interfaces](docs/API_CONTRACTS.md)
+- [Git Branching & Team Workflow](docs/TEAM_WORKFLOW.md)
+- [Machine Learning Specification](docs/ML_SPECIFICATION.md)
 
 ---
 

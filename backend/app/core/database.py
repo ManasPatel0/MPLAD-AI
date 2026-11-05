@@ -2,7 +2,8 @@
 
 Configured for SQLAlchemy 2.0 with asynchronous PostgreSQL (asyncpg).
 Includes safe credential masking, non-blocking health probe checks,
-and graceful fallback when drivers or database instances are unavailable.
+Neon Cloud PostgreSQL compatibility (SSL handling, connection pooler support,
+pool recycling, and serverless cold-start timeouts).
 """
 
 from __future__ import annotations
@@ -12,7 +13,7 @@ import re
 from typing import Any, AsyncGenerator, Dict, Optional
 from urllib.parse import urlparse
 
-from app.core.config import settings
+from app.core.config import normalize_database_url, settings
 
 logger = logging.getLogger(__name__)
 
@@ -39,8 +40,19 @@ _async_session_maker: Any = None
 _driver_error: Optional[str] = None
 
 
+def reset_engine() -> None:
+    """Reset module-level cached engine and session maker state.
+
+    Primarily used for testing, configuration changes, or re-initializing connections.
+    """
+    global _async_engine, _async_session_maker, _driver_error
+    _async_engine = None
+    _async_session_maker = None
+    _driver_error = None
+
+
 def get_engine() -> Any:
-    """Initialize or return the cached SQLAlchemy async engine."""
+    """Initialize or return the cached SQLAlchemy async engine with Neon PostgreSQL optimizations."""
     global _async_engine, _async_session_maker, _driver_error
 
     if _async_engine is not None:
@@ -53,12 +65,32 @@ def get_engine() -> Any:
             create_async_engine,
         )
 
+        db_url = normalize_database_url(settings.DATABASE_URL, is_async=True)
+        lower_url = db_url.lower()
+
+        # Connect arguments tailored for asyncpg and cloud/Neon PostgreSQL
+        connect_args: Dict[str, Any] = {
+            "timeout": settings.DB_CONNECT_TIMEOUT_SECONDS,
+        }
+
+        # Neon pooled endpoint (PgBouncer in transaction pooling mode):
+        # Setting statement_cache_size=0 is required by Neon to prevent
+        # DuplicatePreparedStatementError across pooled client connections.
+        if "-pooler" in lower_url:
+            connect_args["statement_cache_size"] = 0
+            connect_args["prepared_statement_cache_size"] = 0
+
+        # Asyncpg SSL mode configuration
+        if "ssl=" in lower_url or "sslmode=" in lower_url or "neon.tech" in lower_url:
+            connect_args["ssl"] = "require"
+
         _async_engine = create_async_engine(
-            settings.DATABASE_URL,
+            db_url,
             echo=False,
             future=True,
             pool_pre_ping=True,
-            connect_args={"timeout": settings.DB_CONNECT_TIMEOUT_SECONDS},
+            pool_recycle=300,
+            connect_args=connect_args,
         )
         _async_session_maker = async_sessionmaker(
             bind=_async_engine,

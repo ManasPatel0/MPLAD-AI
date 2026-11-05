@@ -3,16 +3,18 @@
 
 ---
 
-## 1. Team Allocation Matrix
+## 1. Team Allocation Matrix (Aligned with Flowchart PS 26102)
 
-| Member | Primary Role | Domain & Core Technologies | Primary Deliverables |
+Each member owns **1 Flowchart Domain and 5 dedicated Subtasks** (Detailed in [TEAM_TASK_ALLOCATION.md](TEAM_TASK_ALLOCATION.md)):
+
+| Member | Title / Role | Flowchart Domain | Primary Deliverables |
 | :--- | :--- | :--- | :--- |
-| **Member 1 (Lead)** | System Architect & Full-Stack Lead | Architecture, FastAPI orchestration, Docker, RBAC | Core API Gateway, Auth Middleware, Docker Compose, Demo Script |
-| **Member 2** | Frontend Lead | React 18, Vite, Tailwind CSS, TanStack Query | Design System, MP Recommendation Portal, District Scrutiny Portal |
-| **Member 3** | Frontend & GIS Specialist | Leaflet, Recharts, Responsive UI | Interactive Map, Citizen Transparency Portal, QR Code Generator |
-| **Member 4** | Backend & Database Specialist | PostgreSQL, SQLAlchemy, Alembic, PostGIS | Database DDL, Migrations, CRUD Services, Audit Logger |
-| **Member 5** | ML Engineer 1 (Predictive Analytics)| Pandas, Scikit-learn (Regression, Time-Series) | Delay Prediction Regressor, Fund Lapse Forecaster, Feature Pipeline |
-| **Member 6** | ML Engineer 2 (Anomaly & Duplicate) | Scikit-learn (TF-IDF, Isolation Forest, Spatial) | Duplicate Proposal Detector, Cost Outlier Engine, Sector NLP Tagger |
+| **Member 1 (Lead)** | System Architect & Backend Lead | 1. Data Sources, 2. Ingestion & Storage, API Gateway | FastAPI Gateway, Docker Compose, Neon/Postgres DB, RBAC, CI/CD |
+| **Member 2** | Data Preprocessing Specialist | 3. Data Preprocessing & Feature Engineering | Cleaning Pipelines, Source Integration, Standardized Parquet Dataset |
+| **Member 3** | ML Engineer 1 (Detection Specialist)| 4. Analysis & Detection Modules | Cost Anomaly, Delay Regressor, Duplicate (NLP+Geo), Payment Anomaly |
+| **Member 4** | ML Engineer 2 (Risk & Explainable AI)| 5. Risk Scoring & 8. Continuous Feedback Loop | 0-100 Hybrid Risk Engine, XAI Reasoning, Remedial Recommendations |
+| **Member 5** | Frontend Lead (Dashboards & Reports) | 6. Web Application (KPIs, Explorer, Analytics, Exports) | React 18 + Vite Shell, Executive KPIs, Multi-Filter Explorer, PDF Export |
+| **Member 6** | Frontend & GIS Specialist (Maps & Dossier)| 6. India GIS Map, Detailed Project Dossier & XAI Views | Interactive Leaflet Map, Flagged Heatmap, Deep-dive Project Dossier |
 
 ---
 
