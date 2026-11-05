@@ -122,33 +122,67 @@ Detailed architectural specifications are available in the [docs/](file:///C:/Us
 
 ---
 
-## 🚀 Getting Started (Planned Development Workflow)
+## 🚀 Getting Started & Local Development (Phase 1)
 
 ### Prerequisites
-- Node.js 18+ & npm
-- Python 3.11+
-- PostgreSQL 15+ (or Docker Desktop)
+- **Python**: 3.11+ (Python 3.14 compatible)
+- **Node.js**: 18+ (Node 20+ recommended) & npm
+- **Database**: PostgreSQL 15+ (Optional in Phase 1; backend includes non-blocking diagnostic probes)
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/ManasPatel0/MPLAD-AI.git
-cd MPLAD-AI
-```
+---
 
-### 2. Backend Setup
-```bash
+### Windows PowerShell Quickstart
+
+#### 1. Backend Setup (FastAPI Gateway)
+Open a PowerShell terminal:
+```powershell
+# Navigate to backend directory
 cd backend
+
+# Create and activate Python virtual environment
 python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+.\.venv\Scripts\Activate.ps1
+
+# Copy environment variables template
+Copy-Item .env.example .env
+
+# Install backend dependencies
 pip install -r requirements.txt
+
+# Run Phase 1 Health Endpoint Tests
+python -m unittest tests/test_health.py
+# Or with pytest:
+# pytest
+
+# Start FastAPI development gateway
 uvicorn app.main:app --reload --port 8000
 ```
-Interactive API documentation will be available at `http://localhost:8000/docs`.
+- Interactive Swagger OpenAPI Docs: `http://localhost:8000/docs`
+- Health Check Endpoint: `http://localhost:8000/api/v1/health`
 
-### 3. Frontend Setup
-```bash
-cd ../frontend
+#### 2. Frontend Setup (React + Vite + Tailwind CSS)
+Open a second PowerShell terminal:
+```powershell
+# Navigate to frontend directory
+cd frontend
+
+# Copy environment variables template
+Copy-Item .env.example .env
+
+# Install dependencies
 npm install
+
+# Run TypeScript compilation and production build check
+npm run build
+
+# Start Vite development server
 npm run dev
 ```
-Client application will run at `http://localhost:5173`.
+- Access the Executive Monitoring Portal at `http://localhost:5173`.
+- The dashboard automatically pings `GET /api/v1/health` and displays the live status badge.
+
+---
+
+### 🧪 Verification & Health Check Results (Phase 1)
+- **Backend Health Tests**: Run `python -m unittest tests/test_health.py` (4 passing tests verifying `/`, `/api/v1/health`, payload contracts, and 404 standard errors).
+- **Frontend Build Verification**: Run `npm run build` in `frontend` (TypeScript `tsc` compiles clean, Vite bundles production assets in `< 5s`).
