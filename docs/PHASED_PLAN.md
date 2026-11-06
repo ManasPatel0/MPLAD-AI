@@ -26,9 +26,10 @@ gantt
     dateFormat  YYYY-MM-DD
     section Phase 1: Foundations
     Scaffold & Environment Setup (All)      :done,    p1_1, 2026-10-23, 2d
-    PostgreSQL Schema & Migrations (M4)     :active,  p1_2, 2026-10-24, 2d
-    Vite + Tailwind Base & Layout (M2, M3)  :active,  p1_3, 2026-10-24, 2d
-    Synthetic Dataset Generation (M5, M6)   :active,  p1_4, 2026-10-24, 2d
+    PostgreSQL Schema & Migrations (M1)     :done,    p1_2, 2026-10-24, 2d
+    Data Ingestion & ETL Pipeline (M1)      :done,    p1_2b, 2026-10-25, 2d
+    Vite + Tailwind Base & Layout (M5, M6)  :active,  p1_3, 2026-10-24, 2d
+    Synthetic Dataset Generation (M2)       :active,  p1_4, 2026-10-24, 2d
     section Phase 2: Core Workflows
     Project Lifecycle Endpoints (M4)        :         p2_1, 2026-10-26, 3d
     MP & District Collector Portals (M2)    :         p2_2, 2026-10-26, 3d

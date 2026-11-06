@@ -65,16 +65,16 @@ flowchart TD
 ### 🧑‍💼 Member 1: Team Leader — System Architecture, Ingestion & Database
 **Primary Focus:** Project coordination, database persistence, automated data ingestion pipelines, and secure API gateway.
 
-- [ ] **Subtask 1.1: Core Monorepo Setup & Docker Orchestration**
+- [x] **Subtask 1.1: Core Monorepo Setup & Docker Orchestration** (Completed)
   - Maintain root repository structure, environment configurations (`.env.example`), and multi-container `docker-compose.yml` uniting FastAPI, PostgreSQL, and Vite React.
   - Establish Git branching conventions (`main`, `develop`, `feature/*`) and enforce PR merge gates.
-- [ ] **Subtask 1.2: Relational Database Modeling & Migrations**
+- [x] **Subtask 1.2: Relational Database Modeling & Migrations** (Completed)
   - Implement and maintain normalized PostgreSQL schemas (Constituencies, Projects, Sanctions, Payments, Milestones, Implementing Agencies) using SQLAlchemy 2.0.
   - Configure Alembic database migration scripts and verify Neon Cloud PostgreSQL connection pooling.
-- [ ] **Subtask 1.3: Data Ingestion & Automated ETL Pipeline**
+- [x] **Subtask 1.3: Data Ingestion & Automated ETL Pipeline** (Completed)
   - Develop ingestion scripts parsing official MPLADS datasets (CSV, Excel, eSAKSHI JSON, MoSPI DigiGov portal data).
-  - Build scheduled batch update jobs to simulate periodic ingestion of new works and financial releases.
-- [ ] **Subtask 1.4: FastAPI REST Gateway & RBAC Security**
+  - Build scheduled batch update jobs and `/api/v1/ingest` endpoints to simulate periodic ingestion of new works and financial releases.
+- [ ] **Subtask 1.4: FastAPI REST Gateway & RBAC Security** (Next Up)
   - Build core REST API routers (`/api/v1/auth`, `/api/v1/projects`, `/api/v1/analytics`, `/api/v1/health`).
   - Implement JWT authentication and Role-Based Access Control (RBAC) supporting: MoSPI Admin, District/Nodal Authority, MP, and Auditor roles.
 - [ ] **Subtask 1.5: End-to-End System Integration & Hackathon Delivery**
