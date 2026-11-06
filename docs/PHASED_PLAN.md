@@ -28,6 +28,7 @@ gantt
     Scaffold & Environment Setup (All)      :done,    p1_1, 2026-10-23, 2d
     PostgreSQL Schema & Migrations (M1)     :done,    p1_2, 2026-10-24, 2d
     Data Ingestion & ETL Pipeline (M1)      :done,    p1_2b, 2026-10-25, 2d
+    REST API Gateway & RBAC Security (M1)   :done,    p1_2c, 2026-10-26, 2d
     Vite + Tailwind Base & Layout (M5, M6)  :active,  p1_3, 2026-10-24, 2d
     Synthetic Dataset Generation (M2)       :active,  p1_4, 2026-10-24, 2d
     section Phase 2: Core Workflows

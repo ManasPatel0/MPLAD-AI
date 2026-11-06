@@ -17,7 +17,7 @@ flowchart TD
     classDef gate fill:#ffebee,stroke:#d32f2f,stroke-width:3px;
 
     subgraph W1["Wave 1: Data Contracts & Foundations (COMPLETED)"]
-        M1_1["Member 1 (Leader - branch: backend) [COMPLETED]\n• PostgreSQL / Neon Schema (1.2)\n• ETL & Ingestion Service (1.3)\n• Pydantic Schemas & /health (1.1)\n• Push to 'backend'"]:::lead
+        M1_1["Member 1 (Leader - branch: backend) [COMPLETED]\n• PostgreSQL / Neon Schema (1.2)\n• ETL & Ingestion Service (1.3)\n• REST Gateway & RBAC Security (1.4)\n• Pydantic Schemas & /health (1.1)\n• Push to 'backend'"]:::lead
         M2_1["Member 2 (branch: data)\n• Raw Data Ingestion & Cleaning\n• Handle Missing Values & Outliers\n• Push to 'data'"]:::data
         M56_1["Members 5 & 6 (branch: frontend)\n• React 18 + Vite Setup\n• Layout Shell & Route Guards\n• Push to 'frontend'"]:::ui
     end

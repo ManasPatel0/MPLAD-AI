@@ -74,7 +74,10 @@ flowchart TD
 - [x] **Subtask 1.3: Data Ingestion & Automated ETL Pipeline** (Completed)
   - Develop ingestion scripts parsing official MPLADS datasets (CSV, Excel, eSAKSHI JSON, MoSPI DigiGov portal data).
   - Build scheduled batch update jobs and `/api/v1/ingest` endpoints to simulate periodic ingestion of new works and financial releases.
-- [ ] **Subtask 1.4: FastAPI REST Gateway & RBAC Security** (Next Up)
+- [x] **Subtask 1.4: FastAPI REST Gateway & RBAC Security** (Completed)
+  - Build core REST API routers (`/api/v1/auth`, `/api/v1/projects`, `/api/v1/analytics`, `/api/v1/health`).
+  - Implement JWT authentication and Role-Based Access Control (RBAC) supporting: MoSPI Admin, District/Nodal Authority, MP, and Auditor roles.
+- [ ] **Subtask 1.5: End-to-End System Integration & Hackathon Delivery** (Next Up)
   - Build core REST API routers (`/api/v1/auth`, `/api/v1/projects`, `/api/v1/analytics`, `/api/v1/health`).
   - Implement JWT authentication and Role-Based Access Control (RBAC) supporting: MoSPI Admin, District/Nodal Authority, MP, and Auditor roles.
 - [ ] **Subtask 1.5: End-to-End System Integration & Hackathon Delivery**

@@ -135,3 +135,4 @@ class IngestionSummary(BaseModel):
     agencies_created: int
     errors: List[Dict[str, Any]] = Field(default_factory=list)
     timestamp: datetime = Field(default_factory=datetime.utcnow)
+
