@@ -197,3 +197,4 @@ async def transition_project_status(
     await db.refresh(project)
 
     return ProjectResponse.model_validate(project)
+

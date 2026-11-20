@@ -79,3 +79,62 @@ export interface HealthCheckData {
   services: Record<string, string>;
   python_version: string;
 }
+
+export interface BackendExecutiveKpis {
+  total_projects: number;
+  proposed_count: number;
+  sanctioned_count: number;
+  in_progress_count: number;
+  completed_count: number;
+  stalled_count: number;
+  total_estimated_cost: string | number;
+  total_sanctioned_cost: string | number;
+  total_actual_expenditure: string | number;
+  fund_utilization_percentage: number;
+  sc_quota_allocation_pct: number;
+  st_quota_allocation_pct: number;
+  sc_quota_mandate_met: boolean;
+  st_quota_mandate_met: boolean;
+  active_anomalies_count: number;
+}
+
+export interface SectorBreakdown {
+  category: WorkCategory;
+  project_count: number;
+  sanctioned_amount: string | number;
+  expenditure_amount: string | number;
+}
+
+export interface AgencyRanking {
+  agency_code: string;
+  agency_name: string;
+  department: string;
+  project_count: number;
+  efficiency_rating: number;
+  avg_delay_days: number;
+}
+
+export interface ProjectListResponse {
+  total: number;
+  page: number;
+  limit: number;
+  items: ProjectItem[];
+}
+
+export interface AuthUser {
+  id: string;
+  email: string;
+  full_name: string;
+  role: string;
+  constituency_id?: string;
+  district_id?: string;
+  agency_id?: string;
+  is_active: boolean;
+  created_at: string;
+}
+
+export interface AuthTokenResponse {
+  access_token: string;
+  token_type: string;
+  user: AuthUser;
+}

@@ -77,10 +77,7 @@ flowchart TD
 - [x] **Subtask 1.4: FastAPI REST Gateway & RBAC Security** (Completed)
   - Build core REST API routers (`/api/v1/auth`, `/api/v1/projects`, `/api/v1/analytics`, `/api/v1/health`).
   - Implement JWT authentication and Role-Based Access Control (RBAC) supporting: MoSPI Admin, District/Nodal Authority, MP, and Auditor roles.
-- [ ] **Subtask 1.5: End-to-End System Integration & Hackathon Delivery** (Next Up)
-  - Build core REST API routers (`/api/v1/auth`, `/api/v1/projects`, `/api/v1/analytics`, `/api/v1/health`).
-  - Implement JWT authentication and Role-Based Access Control (RBAC) supporting: MoSPI Admin, District/Nodal Authority, MP, and Auditor roles.
-- [ ] **Subtask 1.5: End-to-End System Integration & Hackathon Delivery**
+- [x] **Subtask 1.5: End-to-End System Integration & Hackathon Delivery** (Completed)
   - Coordinate interface contracts between Frontend, Backend, and ML inference wrappers.
   - Run continuous integration tests, prepare the final demo execution script, and lead the technical pitch presentation.
 

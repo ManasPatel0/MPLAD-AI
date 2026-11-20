@@ -123,3 +123,4 @@ async def get_current_user_profile(
 ) -> UserResponse:
     """Return identity of authenticated token bearer."""
     return UserResponse.model_validate(current_user)
+

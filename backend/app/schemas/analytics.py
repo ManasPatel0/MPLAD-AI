@@ -51,3 +51,4 @@ class AgencyRankingItem(BaseModel):
     project_count: int
     efficiency_rating: float
     avg_delay_days: float
+

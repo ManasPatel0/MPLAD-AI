@@ -181,3 +181,4 @@ async def get_agencies_ranking(
         )
         for row in results
     ]
+
